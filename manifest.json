@@ -8,8 +8,7 @@
   "manifest_version": 2,
   "description": "An extension to view your Piwik Stats from Google Chrome.",
    "permissions": [
-    "storage",
-    "<all_urls>"
+    "storage"
   ],
  
   "browser_action": {
