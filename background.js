@@ -41,6 +41,10 @@ if (request == null){
 					   chrome.browserAction.setBadgeText({text: visits});
 				console.log(visits)
             }
+		// If URL is not set up in Options display *
+		else {
+				chrome.browserAction.setBadgeText({text: "*"});
+			}
         }
 
         request.open("GET", url, true);
