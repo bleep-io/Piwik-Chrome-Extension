@@ -19,8 +19,3 @@ storage.get('ip', function(items) {
 });
 
 });
-
-
-
-
-

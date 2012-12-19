@@ -16,9 +16,6 @@ var i = 1;
   
 
   
-
-
-  
 function getVisits() {
 var request = new XMLHttpRequest();
 
