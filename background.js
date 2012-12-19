@@ -12,7 +12,7 @@ storage.get('url', function(items) {
   apiKey = items.api;	
 	
 // Calculate Update Time
-	var checkTime = 1 * 60000
+	var checkTime = 30 * 60000
 	
 setInterval(getVisits, checkTime);
 
