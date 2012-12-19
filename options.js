@@ -1,8 +1,8 @@
 var storage = chrome.storage.local;
 
 var submitButton = document.querySelector('button.submit');
-var iptext = document.getElementById('ip');
-var apitext = document.getElementById('api');
+var urlText = document.getElementById('url');
+var apiText = document.getElementById('api');
 
 loadChanges();
 
@@ -10,30 +10,30 @@ submitButton.addEventListener('click', saveChanges);
 
 function saveChanges() {
   // Get the current CSS snippet from the form.
-  var ipAddress = iptext.value;
-  var apiKey = apitext.value;
+  var urlAddress = urlText.value;
+  var apiKey = apiText.value;
   // Check that there's some code there.
-  if (!ipAddress) {
-    message('Error: No IP specified');
+  if (!urlAddress) {
+    console.lgo('Error: No URL specified');
     return;
   }
   // Save it using the Chrome extension storage API.
   storage.set({'api': apiKey}, function() {
       message('Settings saved');
   });
-  storage.set({'ip': ipAddress}, function() {
+  storage.set({'url': urlAddress}, function() {
     // Notify that we saved.
     message('Settings saved');
   });
 }
 
 function loadChanges() {
-  storage.get('ip', function(items) {
+  storage.get('url', function(items) {
     // To avoid checking items.css we could specify storage.get({css: ''}) to
     // return a default value of '' if there is no css value yet.
-    if (items.ip) {
-      iptext.value = items.ip;
-      message('Loaded saved IP.');
+    if (items.url) {
+      urlText.value = items.url;
+      console.log('Loaded saved URL.');
     }
   });
   storage.get('api', function(items) {
@@ -41,7 +41,7 @@ function loadChanges() {
     // return a default value of '' if there is no css value yet.
     if (items.api) {
       apitext.value = items.api;
-      message('Loaded saved IP.');
+      console.log('Loaded saved API');
     }
   });
 }

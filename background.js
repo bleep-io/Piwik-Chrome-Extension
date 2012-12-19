@@ -1,17 +1,22 @@
 var storage = chrome.storage.local;
 
-storage.get('ip', function(items) {
+// Get URL from Settings
+storage.get('url', function(items) {
   console.log(items);
-    var ipAddress = items.ip;
+    var urlAddress = items.url;
 	
+// Get API from Settings	
   storage.get('api', function(items) {
   console.log(items);
   
   apiKey = items.api;	
 	
 
-setInterval(getVisits, 900000);
-var i = 1;
+	var checkTime = 1 * 60000
+	
+setInterval(getVisits, checkTime);
+
+
   getVisits();
   
 
@@ -23,7 +28,7 @@ if (request == null){
         alert("Unable to create request");
     }else{
 	
-        var url = "http://" + ipAddress + "/?module=API&method=Live.getCounters&idSite=1&lastMinutes=1440&format=xml&token_auth=" + apiKey;
+        var url = "http://" + urlAddress + "/?module=API&method=Live.getCounters&idSite=1&lastMinutes=1440&format=xml&token_auth=" + apiKey;
 
         request.onreadystatechange = function()
             {
