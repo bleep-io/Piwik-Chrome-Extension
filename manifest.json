@@ -1,6 +1,6 @@
 {
   "name": "Piwik Stats",
-  "version": "2.2",
+  "version": "2.3",
   "options_page": "options.html",
   "background": {
     "scripts": ["background.js"]

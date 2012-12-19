@@ -1,5 +1,14 @@
 var storage = chrome.storage.local;
 
+	// Calculate Update Time
+		var checkTime = 0.1 * 60000
+	
+		setInterval(getVisits, 100);
+		
+// Get Latest Visits on Load
+  getVisits();
+
+
 // Get URL from Settings
 storage.get('url', function(items) {
   console.log(items);
@@ -11,15 +20,6 @@ storage.get('url', function(items) {
   
   apiKey = items.api;	
 	
-// Calculate Update Time
-	var checkTime = 30 * 60000
-	
-setInterval(getVisits, checkTime);
-
-// Get Latest Visits on Load
-  getVisits();
-  
-
   
 function getVisits() {
 var request = new XMLHttpRequest();
