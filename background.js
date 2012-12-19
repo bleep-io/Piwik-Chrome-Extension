@@ -11,12 +11,12 @@ storage.get('url', function(items) {
   
   apiKey = items.api;	
 	
-
+// Calculate Update Time
 	var checkTime = 1 * 60000
 	
 setInterval(getVisits, checkTime);
 
-
+// Get Latest Visits on Load
   getVisits();
   
 
@@ -27,7 +27,7 @@ var request = new XMLHttpRequest();
 if (request == null){
         alert("Unable to create request");
     }else{
-	
+	// Construct HTTP Request from URL and API Key
         var url = "http://" + urlAddress + "/?module=API&method=Live.getCounters&idSite=1&lastMinutes=1440&format=xml&token_auth=" + apiKey;
 
         request.onreadystatechange = function()
@@ -35,7 +35,9 @@ if (request == null){
             if(request.readyState == 4)
             {
                  var xmlDoc = request.responseXML 
+				 // Get Number of Visits
                      var visits = xmlDoc.getElementsByTagName("visits")[0].firstChild.nodeValue ; 
+					 // Set the Badge Text
 					   chrome.browserAction.setBadgeText({text: visits});
 				console.log(visits)
             }
